@@ -1,0 +1,36 @@
+A) Qual o resultado do percurso Pre-Order(VLR) na árvore?
+
+-> 10 5 3 7 20 15 24
+
+
+B) Explique quais os passos realizados pelo algoritmo de Morris - Percurso PRE-ORDER
+
+1 -> Inicialize um ponteiro "p" apontando para a raiz da árvore
+
+2 -> Enquanto "p" não for nulo, execute os seguintes passos:
+    
+    2.1 -> Verifique se o "p->left = 0"
+        - se for nulo, significa que não temos mais nós a esquerda a serem percorridos e, portanto, printe o conteúdo do nó "p" e faça "p = p->right" para dar prosseguimento ao algoritmo
+
+        - se não for, siga o próximo passo
+
+    2.2 -> Faça o ponteiro temporário "tmp" apontar para o "p->left"
+
+    2.3 -> Enquanto "tmp->right != 0" e "tmp->right != p", percorra os nós à direita de "tmp"
+
+        observação: Esse passo é feito para encontrar o nó mais a direita que vai posteriormente apontar para a "raiz atual" e também restaurar a estrutura da árvore
+
+    2.4 -> Verifique se o "tmp->right" é nulo
+        - se for nulo, significa que não visitamos o nó atual, entao printe o conteúdo de p (raiz atual), faça "tmp->right" apontar para "p" (raiz atual) e faça "p" ir para seu nó esquerdo
+
+            observação: Esta etapa é responsável por conectar o nó mais a direita ao "current root" que vai ser utilizado para restaurar a estrutura da árvore e encerrar a conexão de "tmp->right" com a "raiz atual"
+
+
+        - se não for, faça o "tmp->right = 0" e faça "p = p->right" 
+
+            observação: Esta etapa indica que o nó atual já foi percorrido e já está conectado ao "current root", portanto já podemos printá-lo e encerrar sua conexão com o "current root" e restaurar a estrutura da árvore
+
+
+C) Aplique a árvore no algoritmo e confira se o resultado está correto.
+
+-> Sim, o resultado está correto.
